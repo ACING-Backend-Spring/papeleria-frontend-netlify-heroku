@@ -5,8 +5,8 @@
 export const environment = {
   appName: 'Papeleria DEV',
   production: false,
-  urlHost:'http://localhost:8080/api/',
-  // urlHost: 'https://papeleria-5e9e6dc37819.herokuapp.com/api/',
+  //urlHost:'http://localhost:8080/api/',
+  urlHost: 'https://papeleria-5e9e6dc37819.herokuapp.com/api/',
 };
 
 /*
