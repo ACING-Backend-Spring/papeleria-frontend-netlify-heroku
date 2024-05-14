@@ -59,6 +59,10 @@ export class ClienteService {
     return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);
   }
 
+  getClientesDeEmpresa(empresa: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/search/correo?txt=${empresa}&page=0&size=1000`);
+  }
+
   extraerClientes(respuestaApi: any): Cliente[] {
     const clientes: Cliente[] = [];
     respuestaApi._embedded.clientes.forEach(c => {

@@ -16,7 +16,8 @@ export class ProductosComponent implements OnInit {
   faAddressBook = faAddressBook;
   productos: Producto[] = [];
   productoVerDatos: Producto;
-
+  buscar: boolean = false;
+  empresa: string = "";
 
   constructor(
     private productoService: ProductoService,
@@ -68,5 +69,13 @@ export class ProductosComponent implements OnInit {
 
       this.router.navigate(['/productos']);
     });
+  }
+
+  mostrarBuscar() {
+    this.buscar = !this.buscar;
+  }
+  productosPorEmpresa() {
+    console.log(this.empresa);
+    this.productoService.getProductosDeEmpresa(this.empresa).subscribe((response) => this.productos = this.productoService.extraerProductos(response));
   }
 }

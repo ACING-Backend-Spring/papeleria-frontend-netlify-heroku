@@ -60,6 +60,10 @@ export class ProductoService {
     return this.http.get<any>(`${this.urlEndPoint}?page=0&size=1000`);
   }
 
+  getProductosDeEmpresa(empresa: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/search/clientes-por-correo?tipo-correo=${empresa}&page=0&size=1000`);
+  }
+
   createLibro(producto: Producto): Observable<any> {
     return this.http.post(`${this.host}libros`, producto).pipe(
       catchError((e) => {

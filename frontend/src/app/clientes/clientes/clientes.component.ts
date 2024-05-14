@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Cliente } from '../models/cliente';
 import { ClienteImpl } from '../models/cliente-impl';
 import { ClienteService } from '../service/cliente.service';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-clientes',
@@ -13,6 +15,8 @@ import { ClienteService } from '../service/cliente.service';
 export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
   clienteVerDatos: Cliente;
+  buscar: boolean = false;
+  empresa: string = "";
 
   constructor(
     private clienteService: ClienteService,
@@ -38,5 +42,13 @@ export class ClientesComponent implements OnInit {
       console.log(`He actualizado a ${cliente.nombre}`);
       this.router.navigate(['/clientes']);
     });
+  }
+
+  mostrarBuscar() {
+    this.buscar = !this.buscar;
+  }
+  clientesPorEmpresa() {
+    console.log(this.empresa);
+    this.clienteService.getClientesDeEmpresa(this.empresa).subscribe((response) => this.clientes = this.clienteService.extraerClientes(response));
   }
 }

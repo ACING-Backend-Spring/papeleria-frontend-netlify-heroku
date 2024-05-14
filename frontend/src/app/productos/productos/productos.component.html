@@ -1,7 +1,13 @@
 <hr class='w-100'>
 <div class="row justify-content-end">
-  <button class="btn btn-primary text-white" routerLink="/productos/formulario">Nuevo Producto
+  <button class="btn btn-danger text-white" (click)="ngOnInit()">Todos los productos</button>
+  <button class="btn btn-warning text-white mr-3 ml-3" (click)="mostrarBuscar()">Productos por empresa</button>  <button class="btn btn-primary text-white" routerLink="/productos/formulario">Nuevo Producto
   </button>
+</div>
+<div class="row justify-content-end mt-2" *ngIf="buscar">
+  <label class="mr-2 mt-2"><b>Empresa (email):</b></label>
+  <input type="text" [(ngModel)]="empresa" name="empresa" placeholder="Nombre de la empresa" />
+  <button class="btn btn-danger text-white mr-3 ml-3" (click)="productosPorEmpresa()">Buscar</button>
 </div>
 <hr class='w-100'>
 <div class="row">
